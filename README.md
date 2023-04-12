@@ -1,8 +1,9 @@
 # Overarched
 
 **Overarched** is a wallet for the Archway Blockchain
+<br/>
 *Entry for Archway [Release Your Inner Bull](https://dorahacks.io/hackathon/archway-releaseyourinnerbull/) DoraHacks Hackathon*
-
+<br/>
 ## How to Run
 
 Commands: 
