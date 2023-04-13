@@ -12,7 +12,9 @@
   "author": "",
   "license": "MIT",
   "devDependencies": {
+    "css-loader": "^6.7.3",
     "html-webpack-plugin": "^4.3.0",
+    "style-loader": "^3.3.2",
     "webpack-cli": "^4.10.0",
     "webpack-dev-server": "^4.13.2"
   },

@@ -1,6 +1,7 @@
 import { SigningArchwayClient } from '@archwayhq/arch3.js';
 import ChainInfo from './constantine.config.js';
 import { GasPrice } from "@cosmjs/stargate";
+import './css/style.css';
 
 window.onload = async () => {
     if (!window.getOfflineSigner || !window.keplr) {
