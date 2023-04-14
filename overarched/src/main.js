@@ -1,3 +1,5 @@
+require('es6-promise/auto');
+
 import { SigningArchwayClient } from '@archwayhq/arch3.js';
 import ChainInfo from './constantine.config.js';
 import { GasPrice } from "@cosmjs/stargate";

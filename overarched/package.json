@@ -4,8 +4,9 @@
   "description": "Overarched is a simple wallet for the Archway blockchain",
   "main": "./src/main.js",
   "scripts": {
-    "dev": "webpack-dev-server",
     "test": "echo \"Error: no test specified\" && exit 1",
+    "watch": "webpack --watch",
+    "dev": "webpack-dev-server",
     "build": "webpack"
   },
   "keywords": [],
@@ -13,12 +14,13 @@
   "license": "MIT",
   "devDependencies": {
     "css-loader": "^6.7.3",
-    "html-webpack-plugin": "^4.3.0",
+    "html-webpack-plugin": "5.5.0",
     "style-loader": "^3.3.2",
-    "webpack-cli": "^4.10.0",
+    "webpack-cli": "5.0.1",
     "webpack-dev-server": "^4.13.2"
   },
   "dependencies": {
-    "@archwayhq/arch3.js": "^0.1.0"
+    "@archwayhq/arch3.js": "^0.1.0",
+    "es6-promise": "^4.2.8"
   }
 }
