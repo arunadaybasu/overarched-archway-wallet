@@ -2,8 +2,8 @@
 	background-color: #f2efed;
 }
 
-.bg-color-2 {
-	background-color: #ff4d00;
+.bg-color-2, button:hover {
+	background-color: #ff4d00 !important;
 }
 
 .bg-color-3 {
@@ -25,4 +25,42 @@
 
 #logo-img {
 	width: 150px;
+}
+
+.divider-10px {
+	height: 10px;
+	display: block;
+}
+
+.divider-50px {
+	height: 50px;
+	display: block;
+}
+
+/* label color */
+.input-field label {
+ color: #bdbdbd !important;
+}
+/* label focus color */
+.input-field input[type=text]:focus + label {
+ color: #ff4d00 !important;
+}
+/* label underline focus color */
+.input-field input[type=text]:focus {
+ border-bottom: 1px solid #ff4d00 !important;
+ box-shadow: 0 1px 0 0 #ff4d00 !important;
+}
+/* valid color */
+.input-field input[type=text].valid {
+ border-bottom: 1px solid #4caf50 !important;
+ box-shadow: 0 1px 0 0 #4caf50 !important;
+}
+/* invalid color */
+.input-field input[type=text].invalid {
+ border-bottom: 1px solid #f44336 !important;
+ box-shadow: 0 1px 0 0 #f44336 !important;
+}
+/* icon prefix focus color */
+.input-field .prefix.active {
+ color: #ff4d00 !important;
 }

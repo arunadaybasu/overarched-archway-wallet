@@ -20,6 +20,24 @@ window.onload = async () => {
         }
     }
 
+    const chainId = ChainInfo.chainId;
+
+    await window.keplr.enable(chainId);
+
+    const offlineSigner = window.keplr.getOfflineSigner(chainId);
+
+    const accounts = await offlineSigner.getAccounts();
+
+    const signingClient = await SigningArchwayClient.connectWithSigner(ChainInfo.rpc, offlineSigner, {
+        gasPrice: GasPrice.fromString('0.02uconst'),
+    });
+
+    const balances = await signingClient.getBalance(accounts[0].address, 'uconst');
+    console.log(balances);
+
+    const divres = document.getElementById('span-balance');
+    divres.innerHTML = (balances.amount/1000000) + ' $CONST';
+
     /**await window.keplr.enable(ChainInfo.chainId);
 
     const offlineSigner = window.keplr.getOfflineSigner(ChainInfo.chainId);
@@ -109,31 +127,31 @@ document.sendForm.onsubmit = () => {
     return false;
 };
 
-document.getElementById('balance').onclick = () => {
+// document.getElementById('balance').onclick = () => {
 
-    (async () => {
-        const chainId = ChainInfo.chainId;
+//     (async () => {
+//         const chainId = ChainInfo.chainId;
 
-        await window.keplr.enable(chainId);
+//         await window.keplr.enable(chainId);
 
-        const offlineSigner = window.keplr.getOfflineSigner(chainId);
+//         const offlineSigner = window.keplr.getOfflineSigner(chainId);
 
-        const accounts = await offlineSigner.getAccounts();
+//         const accounts = await offlineSigner.getAccounts();
 
-        const signingClient = await SigningArchwayClient.connectWithSigner(ChainInfo.rpc, offlineSigner, {
-            gasPrice: GasPrice.fromString('0.02uconst'),
-        });
+//         const signingClient = await SigningArchwayClient.connectWithSigner(ChainInfo.rpc, offlineSigner, {
+//             gasPrice: GasPrice.fromString('0.02uconst'),
+//         });
 
-        const balances = await signingClient.getBalance(accounts[0].address, 'uconst');
-        console.log(balances);
+//         const balances = await signingClient.getBalance(accounts[0].address, 'uconst');
+//         console.log(balances);
 
-        const divres = document.getElementById('balance-result');
-        divres.innerHTML = (balances.amount/1000000) + ' $CONST';
+//         const divres = document.getElementById('balance-result');
+//         divres.innerHTML = (balances.amount/1000000) + ' $CONST';
 
-    })();
+//     })();
 
-    return false;
-};
+//     return false;
+// };
 
 document.getElementById('add-account').onclick = () => {
 

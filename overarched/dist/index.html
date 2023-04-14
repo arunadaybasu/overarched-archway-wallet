@@ -35,43 +35,56 @@
                     <div class="col s3"></div>
                     <div class="col s6">
 
-                        <div class="card bg-color-3">
-                            <div class="card-content black-text">
+                        <form name="sendForm">    
 
-                              <span class="card-title">Send $CONST</span>
-                              <p>Overarched is a simple wallet for Archway</p>
+                            <div class="card bg-color-3">
 
-                                <form name="sendForm">
-                                    <div class="form-group">
-                                        <label for="recipient">Recipient</label>
-                                        <input class="form-control" id="recipient" name="recipient">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="amount">Amount</label>
-                                        <div class="input-group">
-                                            <input class="form-control" id="amount" name="amount">
-                                            <div class="input-group-append">
-                                                <div class="input-group-text">CONST</div>
+                                <div class="card-content black-text">
+
+                                    <span class="card-title">Send $CONST</span>
+                                    <p>Overarched is a simple wallet for Archway</p>
+                                    <div class="divider-50px"></div>
+                                    <div class="row">
+                                        <div class="col s12">
+                                            <div class="input-field">
+                                                <input placeholder="Copy paste from Keplr wallet" id="recipient" name="recipient" type="text" class="validate">
+                                                <label for="recipient">Recipient Address</label>
+                                            </div>
+
+                                            <div class="input-field">
+                                                <input placeholder="$CONST" id="amount" name="amount" type="text" class="validate">
+                                                <label for="amount">Amount</label>
                                             </div>
                                         </div>
                                     </div>
-                                    <button class="btn waves-effect waves-light" type="submit" name="action">Submit
+                                    <div class="row">
+                                        <div class="col s8"></div>
+                                        <div class="col s4">
+                                            <div class="display-balance">
+                                                Balance: <span id="span-balance"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+
+                                </div>
+
+                                <div class="card-action">
+                                    <button class="btn waves-effect waves-light bg-color-2" type="submit" name="action">SEND
                                         <i class="material-icons right">send</i>
                                     </button>
-                                </form>
-                            </div>
-                            <div class="card-action">
-                              <a href="#">This is a link</a>
-                              <a href="#">This is a link</a>
-                            </div>
-                        </div>
+                                </div>
 
-                        <a id="balance" class="waves-effect waves-light btn">Check Balance</a>
-                        <div id="balance-result"></div>
+                            </div>
 
-                        <a id="add-account" class="waves-effect waves-light btn">Add Acount</a>
-                        <div id="add-account-result"></div>
-                        
+                        </form>
+
+                        <!-- <a id="balance" class="waves-effect waves-light btn">Check Balance</a>
+                        <div id="balance-result"></div> -->
+
+                        <!-- <a id="add-account" class="waves-effect waves-light btn">Add Acount</a>
+                        <div id="add-account-result"></div> -->
+
                     </div>
                     <div class="col s3"></div>
                 </div>
