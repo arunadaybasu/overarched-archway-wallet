@@ -6,10 +6,23 @@
 	background-color: #ff4d00;
 }
 
+.bg-color-3 {
+	background-color: #ffffff;
+}
+
 .text-color-1 {
 	color: #000000;
 }
 
 .text-color-2 {
 	color: #ff4d00;
+}
+
+.container-custom-1 {
+	width: 100%;
+	max-width: 100%;
+}
+
+#logo-img {
+	width: 150px;
 }

@@ -13,12 +13,11 @@
     <body class="bg-color-1">
         <div id="app">
 
-            <div class="container">
-
+            <div class="container-custom-1">
                 <div class="row bg-color-2">
                     <div class="col 1">
                         <div id="logo-header">
-                            <img src="./assets/logo/white/brandwordmark/ArchwayLogo.png">
+                            <img  id="logo-img" src="./assets/logo/white/brandwordmark/ArchwayLogo.png">
                         </div>
                     </div>
                     <div class="col s10">
@@ -28,45 +27,51 @@
                         
                     </div>
                 </div>
+            </div>
+
+            <div class="container">
 
                 <div class="row">
                     <div class="col s3"></div>
                     <div class="col s6">
-                        <div class="card ">
-                            <div class="card-header">
-                                Send Tokens
-                            </div>
-                            <div class="card-body">
 
-                                    <b>Address:</b>
-                                    <div id="address"></div>
-                                    <form name="sendForm">
-                                        <div class="form-group">
-                                            <label for="recipient">Recipient</label>
-                                            <input class="form-control" id="recipient" name="recipient">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="amount">Amount</label>
-                                            <div class="input-group">
-                                                <input class="form-control" id="amount" name="amount">
-                                                <div class="input-group-append">
-                                                    <div class="input-group-text">CONST</div>
-                                                </div>
+                        <div class="card bg-color-3">
+                            <div class="card-content black-text">
+
+                              <span class="card-title">Send $CONST</span>
+                              <p>Overarched is a simple wallet for Archway</p>
+
+                                <form name="sendForm">
+                                    <div class="form-group">
+                                        <label for="recipient">Recipient</label>
+                                        <input class="form-control" id="recipient" name="recipient">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="amount">Amount</label>
+                                        <div class="input-group">
+                                            <input class="form-control" id="amount" name="amount">
+                                            <div class="input-group-append">
+                                                <div class="input-group-text">CONST</div>
                                             </div>
                                         </div>
-                                        <button class="btn waves-effect waves-light" type="submit" name="action">Submit
-                                            <i class="material-icons right">send</i>
-                                        </button>
-                                    </form>
-
-                                    <a id="balance" class="waves-effect waves-light btn">Check Balance</a>
-                                    <div id="balance-result"></div>
-
-                                    <a id="add-account" class="waves-effect waves-light btn">Add Acount</a>
-                                    <div id="add-account-result"></div>
-
+                                    </div>
+                                    <button class="btn waves-effect waves-light" type="submit" name="action">Submit
+                                        <i class="material-icons right">send</i>
+                                    </button>
+                                </form>
+                            </div>
+                            <div class="card-action">
+                              <a href="#">This is a link</a>
+                              <a href="#">This is a link</a>
                             </div>
                         </div>
+
+                        <a id="balance" class="waves-effect waves-light btn">Check Balance</a>
+                        <div id="balance-result"></div>
+
+                        <a id="add-account" class="waves-effect waves-light btn">Add Acount</a>
+                        <div id="add-account-result"></div>
+                        
                     </div>
                     <div class="col s3"></div>
                 </div>
