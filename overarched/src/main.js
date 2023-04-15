@@ -1,6 +1,6 @@
 require('es6-promise/auto');
 
-import { SigningArchwayClient } from '@archwayhq/arch3.js';
+import { ArchwayClient, SigningArchwayClient } from '@archwayhq/arch3.js';
 import ChainInfo from './constantine.config.js';
 import { GasPrice } from "@cosmjs/stargate";
 import './css/style.css';
@@ -185,84 +185,84 @@ document.sendForm.onsubmit = () => {
     return false;
 };
 
-// document.getElementById('add-account').onclick = () => {
+document.getElementById('add-account').onclick = () => {
 
-//     (async () => {
-//         const chainId = ChainInfo.chainId;
+    (async () => {
+        const chainId = ChainInfo.chainId;
 
-//         await window.keplr.enable(chainId);
+        await window.keplr.enable(chainId);
 
-//         const offlineSigner = window.keplr.getOfflineSigner(chainId);
+        const offlineSigner = window.keplr.getOfflineSigner(chainId);
 
-//         const accounts = await offlineSigner.getAccounts();
+        const accounts = await offlineSigner.getAccounts();
 
-//         const signingClient = await SigningArchwayClient.connectWithSigner(ChainInfo.rpc, offlineSigner, {
-//             gasPrice: GasPrice.fromString('0.02uconst'),
-//         });
+        const signingClient = await ArchwayClient.connect(ChainInfo.rpc);
+        console.log(signingClient);
 
-//         // console.log(accounts);
+        const validators = await signingClient.tmClient.validatorsAll();
+        console.log(validators);
 
-//         const allTxns = await signingClient.searchTx({ sentFromOrTo: accounts[0].address });
-//         // console.log(allTxns);
-//         // const events = JSON.parse(unescape(allTxns[0].rawLog));
-//         // console.log(events[0]);
+        // const allTxns = await signingClient.searchTx({ sentFromOrTo: accounts[0].address });
+        // console.log(allTxns);
+        // const events = JSON.parse(unescape(allTxns[0].rawLog));
+        // console.log(events[0]);
 
-//         var i, j, eventsTemp, liTemp;
-//         const txnList1 = document.getElementById("txn-list-1");
+        // var i, j, eventsTemp, liTemp;
+        // const txnList1 = document.getElementById("txn-list-1");
 
         
 
-//         for (i = 0; i < allTxns.length; i++) {
+        // for (i = 0; i < allTxns.length; i++) {
 
-//             eventsTemp = JSON.parse(unescape(allTxns[i].rawLog));
-//             eventsTemp = eventsTemp[0].events;
+        //     eventsTemp = JSON.parse(unescape(allTxns[i].rawLog));
+        //     eventsTemp = eventsTemp[0].events;
 
-//             console.log(eventsTemp[3].attributes);
-//             // console.log(eventsTemp[3].attributes[0].value);
+        //     console.log(eventsTemp[3].attributes);
+        //     // console.log(eventsTemp[3].attributes[0].value);
 
-//             liTemp = document.createElement("li");
+        //     liTemp = document.createElement("li");
 
-//             if (eventsTemp[3].attributes[1].value == accounts[0].address) {
-//                 liTemp.innerHTML = 
-//                 '<div class="collapsible-header">\
-//                     <i class="material-icons red-text">call_made</i>\
-//                     ' + eventsTemp[3].attributes[2].value + ' $CONST\
-//                 </div>\
-//                 <div class="collapsible-body">\
-//                     <p class="red-text">SENT (DEBIT)</p>\
-//                     <p>Amount: ' + eventsTemp[3].attributes[2].value + '</p>\
-//                     <p>Sender: ' + eventsTemp[3].attributes[1].value + '</p>\
-//                     <p>Receiver: ' + eventsTemp[3].attributes[0].value + '</p>\
-//                 </div>';
-//             } else {
-//                 liTemp.innerHTML = 
-//                 '<div class="collapsible-header">\
-//                     <i class="material-icons green-text">call_received</i>\
-//                     ' + eventsTemp[3].attributes[2].value + ' $CONST\
-//                 </div>\
-//                 <div class="collapsible-body">\
-//                     <p class="red-text">SENT (DEBIT)</p>\
-//                     <p>Amount: ' + eventsTemp[3].attributes[2].value + '</p>\
-//                     <p>Sender: ' + eventsTemp[3].attributes[1].value + '</p>\
-//                     <p>Receiver: ' + eventsTemp[3].attributes[0].value + '</p>\
-//                 </div>';
-//             }
+        //     if (eventsTemp[3].attributes[1].value == accounts[0].address) {
+        //         liTemp.innerHTML = 
+        //         '<div class="collapsible-header">\
+        //             <i class="material-icons red-text">call_made</i>\
+        //             ' + eventsTemp[3].attributes[2].value + ' $CONST\
+        //         </div>\
+        //         <div class="collapsible-body">\
+        //             <p class="red-text">SENT (DEBIT)</p>\
+        //             <p>Amount: ' + eventsTemp[3].attributes[2].value + '</p>\
+        //             <p>Sender: ' + eventsTemp[3].attributes[1].value + '</p>\
+        //             <p>Receiver: ' + eventsTemp[3].attributes[0].value + '</p>\
+        //         </div>';
+        //     } else {
+        //         liTemp.innerHTML = 
+        //         '<div class="collapsible-header">\
+        //             <i class="material-icons green-text">call_received</i>\
+        //             ' + eventsTemp[3].attributes[2].value + ' $CONST\
+        //         </div>\
+        //         <div class="collapsible-body">\
+        //             <p class="red-text">SENT (DEBIT)</p>\
+        //             <p>Amount: ' + eventsTemp[3].attributes[2].value + '</p>\
+        //             <p>Sender: ' + eventsTemp[3].attributes[1].value + '</p>\
+        //             <p>Receiver: ' + eventsTemp[3].attributes[0].value + '</p>\
+        //         </div>';
+        //     }
             
-//             txnList1.appendChild(liTemp);
+        //     txnList1.appendChild(liTemp);
 
-//         }
+        // }
 
-//         // var elems = document.querySelectorAll('.collapsible');
-//         // var instances = M.Collapsible.init(elems, {
-//         //     accordion: true
-//         // });
+        // var elems = document.querySelectorAll('.collapsible');
+        // var instances = M.Collapsible.init(elems, {
+        //     accordion: true
+        // });
 
-//         // const divres = document.getElementById('add-account-result');
-//         // divres.innerHTML = (balances.amount/1000000) + ' $CONST';
+        // const divres = document.getElementById('add-account-result');
+        // divres.innerHTML = (balances.amount/1000000) + ' $CONST';
 
-//     })();
+    })();
 
-// };
+};
 
 
 // document.getElementById('balance').onclick = () => {
