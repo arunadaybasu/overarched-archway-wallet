@@ -7,15 +7,15 @@
 }
 
 .bg-color-3 {
-	background-color: #ffffff;
+	background-color: #ffffff !important;
 }
 
 .text-color-1 {
-	color: #000000;
+	color: #000000 !important;
 }
 
 .text-color-2 {
-	color: #ff4d00;
+	color: #ff4d00 !important;
 }
 
 .container-custom-1 {

@@ -168,11 +168,17 @@ document.getElementById('add-account').onclick = () => {
             gasPrice: GasPrice.fromString('0.02uconst'),
         });
 
-        const balances = await signingClient.getBalance(accounts[0].address, 'uconst');
-        console.log(balances);
+        console.log(accounts);
 
-        const divres = document.getElementById('add-account-result');
-        divres.innerHTML = (balances.amount/1000000) + ' $CONST';
+        const allTxns = await signingClient.searchTx({ sentFromOrTo: accounts[0].address });
+        console.log(allTxns);
+        const events = JSON.parse(unescape(allTxns[0].rawLog));
+        console.log(events[0]);
+
+
+
+        // const divres = document.getElementById('add-account-result');
+        // divres.innerHTML = (balances.amount/1000000) + ' $CONST';
 
     })();
 
