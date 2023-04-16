@@ -7,7 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "watch": "webpack --watch",
     "dev": "webpack-dev-server",
-    "build": "webpack"
+    "start": "webpack serve --open --config webpack.dev.js",
+    "build": "webpack --config webpack.prod.js"
   },
   "keywords": [],
   "author": "",
@@ -17,7 +18,8 @@
     "html-webpack-plugin": "5.5.1",
     "style-loader": "^3.3.2",
     "webpack-cli": "5.0.1",
-    "webpack-dev-server": "4.13.3"
+    "webpack-dev-server": "4.13.3",
+    "webpack-merge": "^5.8.0"
   },
   "dependencies": {
     "@archwayhq/arch3.js": "^0.1.0",
