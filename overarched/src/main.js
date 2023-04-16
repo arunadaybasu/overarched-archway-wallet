@@ -3,6 +3,9 @@ require('es6-promise/auto');
 import { ArchwayClient, SigningArchwayClient } from '@archwayhq/arch3.js';
 import ChainInfo from './constantine.config.js';
 import { GasPrice } from "@cosmjs/stargate";
+
+const protoSigningClient = require("@cosmjs/proto-signing");
+
 import './css/style.css';
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -12,6 +15,159 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
+function getValidators() {
+    (async () => {
+        const chainId = ChainInfo.chainId;
+
+        await window.keplr.enable(chainId);
+
+        const offlineSigner = window.keplr.getOfflineSigner(chainId);
+
+        const accounts = await offlineSigner.getAccounts();
+
+        const signingClient = await ArchwayClient.connect(ChainInfo.rpc);
+        console.log(signingClient);
+
+        const validators = await signingClient.tmClient.validatorsAll();
+        console.log(validators);
+
+        // const allTxns = await signingClient.searchTx({ sentFromOrTo: accounts[0].address });
+        // console.log(allTxns);
+        // const events = JSON.parse(unescape(allTxns[0].rawLog));
+        // console.log(events[0]);
+
+        // var i, j, eventsTemp, liTemp;
+        // const txnList1 = document.getElementById("txn-list-1");
+
+        
+
+        // for (i = 0; i < allTxns.length; i++) {
+
+        //     eventsTemp = JSON.parse(unescape(allTxns[i].rawLog));
+        //     eventsTemp = eventsTemp[0].events;
+
+        //     console.log(eventsTemp[3].attributes);
+        //     // console.log(eventsTemp[3].attributes[0].value);
+
+        //     liTemp = document.createElement("li");
+
+        //     if (eventsTemp[3].attributes[1].value == accounts[0].address) {
+        //         liTemp.innerHTML = 
+        //         '<div class="collapsible-header">\
+        //             <i class="material-icons red-text">call_made</i>\
+        //             ' + eventsTemp[3].attributes[2].value + ' $CONST\
+        //         </div>\
+        //         <div class="collapsible-body">\
+        //             <p class="red-text">SENT (DEBIT)</p>\
+        //             <p>Amount: ' + eventsTemp[3].attributes[2].value + '</p>\
+        //             <p>Sender: ' + eventsTemp[3].attributes[1].value + '</p>\
+        //             <p>Receiver: ' + eventsTemp[3].attributes[0].value + '</p>\
+        //         </div>';
+        //     } else {
+        //         liTemp.innerHTML = 
+        //         '<div class="collapsible-header">\
+        //             <i class="material-icons green-text">call_received</i>\
+        //             ' + eventsTemp[3].attributes[2].value + ' $CONST\
+        //         </div>\
+        //         <div class="collapsible-body">\
+        //             <p class="red-text">SENT (DEBIT)</p>\
+        //             <p>Amount: ' + eventsTemp[3].attributes[2].value + '</p>\
+        //             <p>Sender: ' + eventsTemp[3].attributes[1].value + '</p>\
+        //             <p>Receiver: ' + eventsTemp[3].attributes[0].value + '</p>\
+        //         </div>';
+        //     }
+            
+        //     txnList1.appendChild(liTemp);
+
+        // }
+
+        // var elems = document.querySelectorAll('.collapsible');
+        // var instances = M.Collapsible.init(elems, {
+        //     accordion: true
+        // });
+
+        // const divres = document.getElementById('add-account-result');
+        // divres.innerHTML = (balances.amount/1000000) + ' $CONST';
+
+    })();
+}
+
+function addAccount() {
+    (async () => {
+        const chainId = ChainInfo.chainId;
+
+        await window.keplr.enable(chainId);
+
+        const offlineSigner = window.keplr.getOfflineSigner(chainId);
+
+        const accounts = await offlineSigner.getAccounts();
+
+        const signingClient = await ArchwayClient.connect(ChainInfo.rpc);
+        console.log(signingClient);
+
+        const addAccResult = await protoSigningClient.DirectSecp256k1HdWallet.generate(12,{});
+        console.log(addAccResult);
+
+        // const allTxns = await signingClient.searchTx({ sentFromOrTo: accounts[0].address });
+        // console.log(allTxns);
+        // const events = JSON.parse(unescape(allTxns[0].rawLog));
+        // console.log(events[0]);
+
+        // var i, j, eventsTemp, liTemp;
+        // const txnList1 = document.getElementById("txn-list-1");
+
+        
+
+        // for (i = 0; i < allTxns.length; i++) {
+
+        //     eventsTemp = JSON.parse(unescape(allTxns[i].rawLog));
+        //     eventsTemp = eventsTemp[0].events;
+
+        //     console.log(eventsTemp[3].attributes);
+        //     // console.log(eventsTemp[3].attributes[0].value);
+
+        //     liTemp = document.createElement("li");
+
+        //     if (eventsTemp[3].attributes[1].value == accounts[0].address) {
+        //         liTemp.innerHTML = 
+        //         '<div class="collapsible-header">\
+        //             <i class="material-icons red-text">call_made</i>\
+        //             ' + eventsTemp[3].attributes[2].value + ' $CONST\
+        //         </div>\
+        //         <div class="collapsible-body">\
+        //             <p class="red-text">SENT (DEBIT)</p>\
+        //             <p>Amount: ' + eventsTemp[3].attributes[2].value + '</p>\
+        //             <p>Sender: ' + eventsTemp[3].attributes[1].value + '</p>\
+        //             <p>Receiver: ' + eventsTemp[3].attributes[0].value + '</p>\
+        //         </div>';
+        //     } else {
+        //         liTemp.innerHTML = 
+        //         '<div class="collapsible-header">\
+        //             <i class="material-icons green-text">call_received</i>\
+        //             ' + eventsTemp[3].attributes[2].value + ' $CONST\
+        //         </div>\
+        //         <div class="collapsible-body">\
+        //             <p class="red-text">SENT (DEBIT)</p>\
+        //             <p>Amount: ' + eventsTemp[3].attributes[2].value + '</p>\
+        //             <p>Sender: ' + eventsTemp[3].attributes[1].value + '</p>\
+        //             <p>Receiver: ' + eventsTemp[3].attributes[0].value + '</p>\
+        //         </div>';
+        //     }
+            
+        //     txnList1.appendChild(liTemp);
+
+        // }
+
+        // var elems = document.querySelectorAll('.collapsible');
+        // var instances = M.Collapsible.init(elems, {
+        //     accordion: true
+        // });
+
+        // const divres = document.getElementById('add-account-result');
+        // divres.innerHTML = (balances.amount/1000000) + ' $CONST';
+
+    })();
+}
 
 window.onload = async () => {
     if (!window.getOfflineSigner || !window.keplr) {
@@ -187,80 +343,7 @@ document.sendForm.onsubmit = () => {
 
 document.getElementById('add-account').onclick = () => {
 
-    (async () => {
-        const chainId = ChainInfo.chainId;
-
-        await window.keplr.enable(chainId);
-
-        const offlineSigner = window.keplr.getOfflineSigner(chainId);
-
-        const accounts = await offlineSigner.getAccounts();
-
-        const signingClient = await ArchwayClient.connect(ChainInfo.rpc);
-        console.log(signingClient);
-
-        const validators = await signingClient.tmClient.validatorsAll();
-        console.log(validators);
-
-        // const allTxns = await signingClient.searchTx({ sentFromOrTo: accounts[0].address });
-        // console.log(allTxns);
-        // const events = JSON.parse(unescape(allTxns[0].rawLog));
-        // console.log(events[0]);
-
-        // var i, j, eventsTemp, liTemp;
-        // const txnList1 = document.getElementById("txn-list-1");
-
-        
-
-        // for (i = 0; i < allTxns.length; i++) {
-
-        //     eventsTemp = JSON.parse(unescape(allTxns[i].rawLog));
-        //     eventsTemp = eventsTemp[0].events;
-
-        //     console.log(eventsTemp[3].attributes);
-        //     // console.log(eventsTemp[3].attributes[0].value);
-
-        //     liTemp = document.createElement("li");
-
-        //     if (eventsTemp[3].attributes[1].value == accounts[0].address) {
-        //         liTemp.innerHTML = 
-        //         '<div class="collapsible-header">\
-        //             <i class="material-icons red-text">call_made</i>\
-        //             ' + eventsTemp[3].attributes[2].value + ' $CONST\
-        //         </div>\
-        //         <div class="collapsible-body">\
-        //             <p class="red-text">SENT (DEBIT)</p>\
-        //             <p>Amount: ' + eventsTemp[3].attributes[2].value + '</p>\
-        //             <p>Sender: ' + eventsTemp[3].attributes[1].value + '</p>\
-        //             <p>Receiver: ' + eventsTemp[3].attributes[0].value + '</p>\
-        //         </div>';
-        //     } else {
-        //         liTemp.innerHTML = 
-        //         '<div class="collapsible-header">\
-        //             <i class="material-icons green-text">call_received</i>\
-        //             ' + eventsTemp[3].attributes[2].value + ' $CONST\
-        //         </div>\
-        //         <div class="collapsible-body">\
-        //             <p class="red-text">SENT (DEBIT)</p>\
-        //             <p>Amount: ' + eventsTemp[3].attributes[2].value + '</p>\
-        //             <p>Sender: ' + eventsTemp[3].attributes[1].value + '</p>\
-        //             <p>Receiver: ' + eventsTemp[3].attributes[0].value + '</p>\
-        //         </div>';
-        //     }
-            
-        //     txnList1.appendChild(liTemp);
-
-        // }
-
-        // var elems = document.querySelectorAll('.collapsible');
-        // var instances = M.Collapsible.init(elems, {
-        //     accordion: true
-        // });
-
-        // const divres = document.getElementById('add-account-result');
-        // divres.innerHTML = (balances.amount/1000000) + ' $CONST';
-
-    })();
+    addAccount();
 
 };
 
